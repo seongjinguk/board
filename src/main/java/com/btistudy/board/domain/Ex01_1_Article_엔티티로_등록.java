@@ -6,6 +6,7 @@ import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 import java.util.LinkedHashSet;
@@ -38,7 +39,8 @@ import java.util.Set;
  */
 @Getter
 @ToString
-@Entity
+//@EntityListeners(AuditingEntityListener.class)
+//@Entity
 @Table(indexes = {
         @Index(columnList = "title"),
         @Index(columnList = "hashtag"),
@@ -79,7 +81,7 @@ public class Ex01_1_Article_엔티티로_등록 {
     @ToString.Exclude /* 엄청 중요!!
         이거 없으면 Circle reference 이슈가 생김.
         @ToString이 모든 필드들을 다 찍고 Set<Ex01_2_ArticleComment_엔티티로_등록>꺼를 찍으려고 하는데
-        그러면 ArticleComment파일 가서도 거기있는 @ToString이 모든 원소들을 다 찍으려고 하면서 Ex01_1_Article_엔티티로_등록 이라는걸 보는 순간 다시 Article의 @ToString이 동작하면서 또 모든 원소들을 찍을거임. 이런식으로 서로가 서로를 호출하면서 순환 참조를 하게 되면서 메모리가 터져서 시스템이 다운될 수 있다. 
+        그러면 ArticleComment파일 가서도 거기있는 @ToString이 모든 원소들을 다 찍으려고 하면서 Ex01_1_Article_엔티티로_등록 이라는걸 보는 순간 다시 Article의 @ToString이 동작하면서 또 모든 원소들을 찍을거임. 이런식으로 서로가 서로를 호출하면서 순환 참조를 하게 되면서 메모리가 터져서 시스템이 다운될 수 있다.
         
         그래서 @ToString 끊기 위해서 @ToString.Exclude 를 사용함
 
@@ -121,8 +123,6 @@ public class Ex01_1_Article_엔티티로_등록 {
         this.hashtag = hashtag;
     }
 
-    
-    
 
     /* factory method pattern (정적 팩토리 메서드)
         정적 팩토리 메서드는 객체 생성의 역할을 하는 클래스 메서드(static 으로 무조건 해야함).
