@@ -74,7 +74,7 @@ public class Ex02_1_Article_공통필드_분리 extends Ex02_3_AuditingFields {
     @OrderBy("id") // 양방향 바인딩 할건데 정렬 기준은 id로 하겠다는 뜻
     @OneToMany(mappedBy = "article", cascade = CascadeType.ALL) // mappedBy로 양방향 바인딩의 이름을 지정
     @ToString.Exclude
-    private final Set<Ex02_1_Article_공통필드_분리> articleComment = new LinkedHashSet<>();
+    private final Set<Ex02_2_ArticleComment_공통필드_분리> articleComment = new LinkedHashSet<>();
 
 
 //    // 메타데이터
