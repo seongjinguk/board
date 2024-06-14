@@ -28,3 +28,29 @@ spring:
   h2.console.enabled: false
   sql.init.mode: always # 저 위에서 언급한 data.sql 을 언제 작동시킬건지 결정하는 여부
   # never(사용안함) , always(리얼 환경), Embedded(embedded)(테스트 때만)
+
+#  RESTful & HAL 관련
+  data:
+    rest:
+      base-path: /api # 엑셀에서(EndPoint) 설계한거대로 맨 앞에 /api를 붙인거임
+      detection-strategy: annotated # 레퍼지토리의 노출 범위 결정
+        # default - 모든 public 레포지토리 인터페이스 표시(그러나 @RestResource 가 포함된것만 노출)
+        # all - 모든 레포지토리 노출
+        # annotated - 지정한것만 노출
+        # visibility - public 인 레포지토리만 노출
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
